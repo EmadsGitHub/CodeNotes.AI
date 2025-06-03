@@ -1,19 +1,13 @@
 import React, { useState } from 'react';
-import { FaGithub } from 'react-icons/fa';
+import { FaGithub, FaGoogle } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
-const UploadRepository = () => {
-  // State for form input
-  const [githubUrl, setGithubUrl] = useState('');
-
-  // Handle form submission
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // In a real app, you would process the GitHub URL here
-    console.log('GitHub URL submitted:', githubUrl);
-    // Reset form after submission
-    setGithubUrl('');
-  };
+const Signup = () => {
+  // State for form inputs
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
 
   return (
     <div className="min-h-screen w-full bg-black flex items-center justify-center p-6 relative overflow-hidden">
@@ -80,7 +74,7 @@ const UploadRepository = () => {
         <div className="absolute inset-0 bg-gradient-to-tr from-blue-900/10 to-purple-900/10 animate-gradient"></div>
       </div>
       
-      {/* Repository upload card */}
+      {/* Signup card */}
       <div className="w-full max-w-md bg-[#121212] bg-opacity-80 backdrop-blur-lg rounded-xl shadow-2xl border border-gray-800 z-10 overflow-hidden animate-fade-in">
         {/* Logo section */}
         <div className="flex flex-col items-center justify-center pt-8 pb-4">
@@ -91,49 +85,91 @@ const UploadRepository = () => {
               className="w-full h-full object-contain drop-shadow-lg animate-float-slow"
             />
           </div>
-          <h1 className="text-white text-2xl font-bold mb-1 animate-slide-up">Upload Repository</h1>
-          <p className="text-gray-400 text-sm animate-slide-up" style={{ animationDelay: '0.1s' }}>Enter a GitHub repository URL to analyze</p>
+          <h1 className="text-white text-2xl font-bold mb-1 animate-slide-up">Create Account</h1>
+          <p className="text-gray-400 text-sm animate-slide-up" style={{ animationDelay: '0.1s' }}>Already have an account? <Link to="/" className="text-blue-500 hover:text-blue-400 transition-colors">Log in</Link></p>
         </div>
         
         {/* Form section */}
         <div className="px-8 py-6">
-          <form onSubmit={handleSubmit}>
-            <div className="mb-6 animate-slide-up" style={{ animationDelay: '0.2s' }}>
-              <div className="relative">
-                <input 
-                  type="url" 
-                  value={githubUrl}
-                  onChange={(e) => setGithubUrl(e.target.value)}
-                  className="w-full bg-black/60 border border-gray-700 rounded-lg py-3 px-4 pl-10 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-                  placeholder="GitHub Repository URL"
-                  required
-                />
-                <FaGithub className="absolute left-3 top-3.5 w-5 h-5 text-gray-500" />
-              </div>
-              <p className="mt-2 text-xs text-gray-400">Example: https://github.com/username/repository</p>
+          <div className="mb-4 animate-slide-up" style={{ animationDelay: '0.2s' }}>
+            <div className="relative">
+              <input 
+                type="text" 
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                className="w-full bg-black/60 border border-gray-700 rounded-lg py-3 px-4 pl-10 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                placeholder="Full name"
+              />
+              <svg className="absolute left-3 top-3.5 w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+              </svg>
             </div>
-            <button 
-              type="submit"
-              className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-4 rounded-lg transition-colors animate-slide-up hover:shadow-glow"
-              style={{ animationDelay: '0.3s' }}
-            >
-              Analyze Repository
-            </button>
-          </form>
+          </div>
+          <div className="mb-4 animate-slide-up" style={{ animationDelay: '0.3s' }}>
+            <div className="relative">
+              <input 
+                type="email" 
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="w-full bg-black/60 border border-gray-700 rounded-lg py-3 px-4 pl-10 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                placeholder="Email address"
+              />
+              <svg className="absolute left-3 top-3.5 w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+            </div>
+          </div>
+          <div className="mb-4 animate-slide-up" style={{ animationDelay: '0.4s' }}>
+            <div className="relative">
+              <input 
+                type="password" 
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="w-full bg-black/60 border border-gray-700 rounded-lg py-3 px-4 pl-10 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                placeholder="Password"
+              />
+              <svg className="absolute left-3 top-3.5 w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+              </svg>
+            </div>
+          </div>
+          <div className="mb-6 animate-slide-up" style={{ animationDelay: '0.5s' }}>
+            <div className="relative">
+              <input 
+                type="password" 
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                className="w-full bg-black/60 border border-gray-700 rounded-lg py-3 px-4 pl-10 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                placeholder="Confirm password"
+              />
+              <svg className="absolute left-3 top-3.5 w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+              </svg>
+            </div>
+          </div>
+          <button 
+            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-4 rounded-lg transition-colors animate-slide-up hover:shadow-glow"
+            style={{ animationDelay: '0.6s' }}
+          >
+            Sign Up
+          </button>
           
-          <div className="mt-8 pt-6 border-t border-gray-700">
-            <div className="flex justify-between items-center animate-slide-up" style={{ animationDelay: '0.4s' }}>
-              <Link to="/" className="text-gray-400 hover:text-white transition-colors text-sm">
-                Back to dashboard
-              </Link>
-              <div className="flex space-x-2">
-                <button className="w-8 h-8 flex items-center justify-center rounded-full bg-black/60 hover:bg-black/80 border border-gray-700 transition-all">
-                  <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                </button>
-              </div>
-            </div>
+          <div className="flex items-center my-4 animate-slide-up" style={{ animationDelay: '0.7s' }}>
+            <hr className="flex-1 border-gray-700" />
+            <span className="px-3 text-gray-500 text-sm">OR</span>
+            <hr className="flex-1 border-gray-700" />
+          </div>
+          
+          {/* Social signups */}
+          <div className="grid grid-cols-2 gap-4 animate-slide-up" style={{ animationDelay: '0.8s' }}>
+            <button className="flex items-center justify-center bg-black/60 hover:bg-black/80 text-white font-medium py-2.5 px-4 rounded-lg border border-gray-700 transition-all hover:border-blue-600">
+              <FaGithub className="w-5 h-5 mr-2" />
+              <span>GitHub</span>
+            </button>
+            <button className="flex items-center justify-center bg-black/60 hover:bg-black/80 text-white font-medium py-2.5 px-4 rounded-lg border border-gray-700 transition-all hover:border-blue-600">
+              <FaGoogle className="w-5 h-5 mr-2" />
+              <span>Google</span>
+            </button>
           </div>
         </div>
       </div>
@@ -231,4 +267,4 @@ const UploadRepository = () => {
   );
 };
 
-export default UploadRepository;
+export default Signup;
